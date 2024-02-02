@@ -1,0 +1,39 @@
+
+img{
+    max-width: 100%;
+    
+  }
+  
+  .post{
+    display: grid;
+    grid-template-columns: .8fr 1.2fr;
+    gap: 0.5em;
+    margin-bottom: 1.2em;
+  }
+  
+  .post .texts h2{
+    margin:0;
+    font-size:2rem;
+  }
+  
+  .image{
+    margin-right: 3%;
+  }
+  
+  p.info{
+    margin: 1rem 0;
+    color: #888;
+    font-size:1rem;
+    /* font-weight:bold; */
+    display:flex;
+    gap: 0.8rem;
+  }
+  
+  a.author{
+    color: #333;
+  }
+  
+  p.desc{
+    margin: 10px 0;
+    line-height: 1.25rem;
+  }
