@@ -7,18 +7,22 @@ function Register() {
   async function register(ev) {
     ev.preventDefault();
     try {
-      const response = await fetch('http://localhost:8081/signup', {
-        method: 'POST',
+      const response = await fetch("http://localhost:8081/signup", {
+        method: "POST",
         body: JSON.stringify({ username, password }),
-        headers: { 'Content-Type': 'application/json' }
+        headers: { "Content-Type": "application/json" },
       });
-      const data = await response.json();
-      console.log(data); // Log the response data to see if it contains what you expect
-    } catch (error) {
-      console.error('Error registering:', error);
+      if (response.status === 200) {
+        const data = await response.json();
+        console.log(data);
+        alert("Registeration Successful!");
+      } else {
+        alert("Registeration Failed!");
+      }
+    } catch (e) {
+      console.error("Error registering:", e);
     }
   }
-  
 
   return (
     <>
