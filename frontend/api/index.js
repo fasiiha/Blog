@@ -4,12 +4,13 @@ const mongoose = require("mongoose");
 const User = require("../api/models/User");
 const bcrypt = require("bcryptjs");
 const jwt = require("jsonwebtoken");
-
+const cookieParser = require("cookie-parser");
 
 const app = express();
 
 app.use(express.json());
 app.use(cors({ credentials: true, origin: "http://localhost:5173" }));
+app.use(cookieParser());
 
 const salt = bcrypt.genSaltSync(10);
 const secret = "dncsdnckjsd";
@@ -58,6 +59,7 @@ app.post("/login", async (req, res) => {
 });
 
 app.get('/profile', (req, res) => {
+    const {token} = req.cookies;
     res.json(req.cookies);
 })
 
