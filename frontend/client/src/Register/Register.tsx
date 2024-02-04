@@ -4,15 +4,21 @@ function Register() {
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
 
-  async function register(ev: { preventDefault: () => void; }){
-    
+  async function register(ev) {
     ev.preventDefault();
-    await fetch('http://localhost:8081/signup', {
-      method: 'POST',
-      body: JSON.stringify({username, password}),
-      headers: {'Content-Type': 'application/json'}
-    })
+    try {
+      const response = await fetch('http://localhost:8081/signup', {
+        method: 'POST',
+        body: JSON.stringify({ username, password }),
+        headers: { 'Content-Type': 'application/json' }
+      });
+      const data = await response.json();
+      console.log(data); // Log the response data to see if it contains what you expect
+    } catch (error) {
+      console.error('Error registering:', error);
+    }
   }
+  
 
   return (
     <>
